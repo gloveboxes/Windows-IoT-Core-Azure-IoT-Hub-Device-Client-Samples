@@ -1,51 +1,45 @@
-﻿using Glovebox.Graphics.Components;
-using Glovebox.Graphics.Drivers;
-using Glovebox.IoT.Devices.Converters;
-using Glovebox.IoT.Devices.HATs;
-using Glovebox.IoT.Devices.Sensors;
+﻿
+using GHIElectronics.UWP.Shields;
 using Microsoft.Azure.Devices.Client;
 using System;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Background;
-using static Glovebox.IoT.Devices.HATs.ExplorerHatPro;
 
-namespace IoTHubMqttClient
+namespace IoTHubFezHat
 {
     public sealed class StartupTask : IBackgroundTask
     {
-        private DeviceClient deviceClient = DeviceClient.CreateFromConnectionString("HostName=glovebox-iot-hub.azure-devices.net;DeviceId=RPi3DG;SharedAccessKey=Y7KaNlIPwYOf7S70Gc/zeo0pOFcQww5OO/hZ7uAiEh0=");
+        private DeviceClient deviceClient = DeviceClient.CreateFromConnectionString("HostName=glovebox-iot-hub.azure-devices.net;DeviceId=RPiFez;SharedAccessKey=VHWMLDbUZ7EOsbeS5NfO560+xFjhrMYh5Q1Bga4wQHg=");
 
         BackgroundTaskDeferral deferral;
+        FEZHAT hat;
 
-        ExplorerHatPro hat = new ExplorerHatPro(ADS1015.Gain.Volt5);
-        BME280 bme280 = new BME280();
-        LED8x8Matrix matrix = new LED8x8Matrix(new Ht16K33());
 
         Telemetry telemetry;
 
-        public void Run(IBackgroundTaskInstance taskInstance) {
+        public async void Run(IBackgroundTaskInstance taskInstance) {
             deferral = taskInstance.GetDeferral();
+            hat = await FEZHAT.CreateAsync();
 
-            telemetry = new Telemetry("Sydney", "RPi3DG");
+            telemetry = new IoTHubFezHat.Telemetry("Sydney", "RPiFez");
 
             ReceiveC2dAsync(deviceClient);
 
             var result = Task.Run(async () => {
                 while (true) {
                     try {
-                        matrix.DrawSymbol(Glovebox.Graphics.Grid.Grid8x8.Symbols.HourGlass);
-                        matrix.FrameDraw();
 
-                        var content = new Message(telemetry.ToJson(bme280.Temperature.DegreesCelsius, hat.AnalogRead(ExplorerHatPro.AnalogPin.Ain2).ReadRatio(), bme280.Pressure.Hectopascals, bme280.Humidity));
+                        hat.D3.Color = new FEZHAT.Color(0, 255, 0);
+
+                        var content = new Message(telemetry.ToJson(hat.GetTemperature(), hat.GetLightLevel(), 0, 0));
                         await deviceClient.SendEventAsync(content);
 
-                        matrix.FrameClear();
-                        matrix.FrameDraw();
+                        hat.D3.TurnOff();
 
                         await Task.Delay(20000); // don't leave this running for too long at this rate as you'll quickly consume your free daily Iot Hub Message limit
                     }
-                    catch { hat.Light(Colour.Red).On(); }
+                    catch {hat.D2.Color = new FEZHAT.Color(127, 0, 255); }  //purple
                 }
             });
         }
@@ -62,22 +56,20 @@ namespace IoTHubMqttClient
                 string command = Encoding.ASCII.GetString(receivedMessage.GetBytes()).ToUpper();
 
                 switch (command) {
-                    //case "RED":
-                    //    hat.Light(Colour.Red).On();
-                    //    break;
+                    case "RED":
+                        hat.D2.Color = new FEZHAT.Color(255, 0, 0);
+                        break;
                     case "GREEN":
-                        hat.Light(Colour.Green).On();
+                        hat.D2.Color = new FEZHAT.Color(0, 255, 0);
                         break;
                     case "BLUE":
-                        hat.Light(Colour.Blue).On();
+                        hat.D2.Color = new FEZHAT.Color(0, 0, 255);
                         break;
                     case "YELLOW":
-                        hat.Light(Colour.Yellow).On();
+                        hat.D2.Color = new FEZHAT.Color(255, 255, 0);
                         break;
                     case "OFF":
-                        for (int l = 0; l < hat.ColourCount; l++) {
-                            hat.Light((Colour)l).Off();
-                        }
+                        hat.D2.TurnOff();
                         break;
                     default:
                         System.Diagnostics.Debug.WriteLine("Unrecognized command: {0}", command);
