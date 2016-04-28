@@ -51,7 +51,7 @@ namespace IoTHubMqttClient
             while (true) {
                 Message receivedMessage = await deviceClient.ReceiveAsync();
                 if (receivedMessage == null) {
-                    await Task.Delay(4000);
+                    await Task.Delay(2000);
                     continue;
                 }
 
