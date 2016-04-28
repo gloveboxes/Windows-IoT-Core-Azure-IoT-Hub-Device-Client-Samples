@@ -39,7 +39,7 @@ namespace IoTHubFezHat
 
                         await Task.Delay(20000); // don't leave this running for too long at this rate as you'll quickly consume your free daily Iot Hub Message limit
                     }
-                    catch {hat.D2.Color = new FEZHAT.Color(127, 0, 255); }  //purple
+                    catch {hat.D2.Color = new FEZHAT.Color(127, 0, 255); }  //purple http://rapidtables.com/web/color/RGB_Color.htm
                 }
             });
         }
