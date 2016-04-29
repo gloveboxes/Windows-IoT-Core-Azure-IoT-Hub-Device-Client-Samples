@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoTHubPiSense", "IoTHubPiSense\IoTHubPiSense.csproj", "{2DA130CA-9FB4-48A7-9453-90230954C076}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PiSenseHAT", "IoTHubPiSense\PiSenseHAT.csproj", "{2DA130CA-9FB4-48A7-9453-90230954C076}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FezHat", "FezHat\FezHat.csproj", "{6006EA60-23BE-4D21-8DB0-E585C30714E7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FezHAT", "FezHat\FezHAT.csproj", "{6006EA60-23BE-4D21-8DB0-E585C30714E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExplorerProHat", "ExplorerProHat\ExplorerProHat.csproj", "{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExplorerProHAT", "ExplorerProHat\ExplorerProHAT.csproj", "{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
