@@ -20,6 +20,8 @@ namespace IoTHubPiSense
         public string Light { get; set; }
         public string Dev { get; set; }
         public int Id { get; set; }
+        public int Cadence { get; set; } = 60000;
+        public int Exceptions { get; set; }
 
         public byte[] ToJson(double temperature, double light, double hpa, double humidity) {
             Celsius = RoundMeasurement(temperature, 2).ToString();
@@ -31,6 +33,17 @@ namespace IoTHubPiSense
         }
         private string RoundMeasurement(double value, int places) {
             return Math.Round(value, places).ToString();
+        }
+
+        public bool SetCadence(string cmd) {
+            ushort newCadence = 0;
+            if (ushort.TryParse(cmd, out newCadence)) {
+                if (newCadence > 0) {
+                    Cadence = newCadence * 1000;
+                }
+                return true;
+            }
+            return false;
         }
 
 
@@ -51,7 +64,7 @@ namespace IoTHubPiSense
         //    return CorrectedUtcTime;
         //}
 
- 
+
 
 
         //public Telemetry(string geo, string deviceId) {

@@ -22,9 +22,9 @@ namespace IoTHubPiSense
         ISenseHat hat;
         ISenseHatDisplay display;
         Telemetry telemetry;
-        bool exceptionHappened = false;
         TinyFont tinyFont = new TinyFont();
         Color statusColour = Colors.Blue;
+
 
         public async void Run(IBackgroundTaskInstance taskInstance) {
             deferral = taskInstance.GetDeferral();
@@ -49,15 +49,15 @@ namespace IoTHubPiSense
 
                         display.Clear();
 
-                        if (exceptionHappened) {
-                            tinyFont.Write(display, "E", Colors.Red);                 
+                        if (telemetry.Exceptions > 0) {
+                            tinyFont.Write(display, "E", Colors.Red);
                         }
 
                         display.Update();
 
-                        await Task.Delay(20000); // don't leave this running for too long at this rate as you'll quickly consume your free daily Iot Hub Message limit
+                        await Task.Delay(telemetry.Cadence); // don't leave this running for too long at this rate as you'll quickly consume your free daily Iot Hub Message limit
                     }
-                    catch { exceptionHappened = true; }
+                    catch { telemetry.Exceptions++; }
                 }
             });
         }
@@ -73,9 +73,11 @@ namespace IoTHubPiSense
                 await deviceClient.CompleteAsync(receivedMessage);
                 string command = Encoding.ASCII.GetString(receivedMessage.GetBytes()).ToUpper();
 
+                if (telemetry.SetCadence(command)) { continue; }
+
                 switch (command) {
-                    case "RED":                        
-                        statusColour = Colors.Red;                       
+                    case "RED":
+                        statusColour = Colors.Red;
                         break;
                     case "GREEN":
                         statusColour = Colors.Green;

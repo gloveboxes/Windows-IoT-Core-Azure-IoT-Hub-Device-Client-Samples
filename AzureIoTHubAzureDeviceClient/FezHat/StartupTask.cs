@@ -14,8 +14,6 @@ namespace IoTHubFezHat
 
         BackgroundTaskDeferral deferral;
         FEZHAT hat;
-
-
         Telemetry telemetry;
 
         public async void Run(IBackgroundTaskInstance taskInstance) {
@@ -39,9 +37,11 @@ namespace IoTHubFezHat
 
                         hat.D3.TurnOff();
 
-                        await Task.Delay(20000); // don't leave this running for too long at this rate as you'll quickly consume your free daily Iot Hub Message limit
+                        await Task.Delay(telemetry.Cadence); // don't leave this running for too long at this rate as you'll quickly consume your free daily Iot Hub Message limit
                     }
-                    catch {hat.D2.Color = new FEZHAT.Color(127, 0, 255); }  //purple http://rapidtables.com/web/color/RGB_Color.htm
+                    catch {
+                        telemetry.Exceptions++;
+                        hat.D2.Color = new FEZHAT.Color(127, 0, 255); }  //purple http://rapidtables.com/web/color/RGB_Color.htm
                 }
             });
         }
@@ -56,6 +56,8 @@ namespace IoTHubFezHat
 
                 await deviceClient.CompleteAsync(receivedMessage);
                 string command = Encoding.ASCII.GetString(receivedMessage.GetBytes()).ToUpper();
+
+                if (telemetry.SetCadence(command)) { continue; }
 
                 switch (command) {
                     case "RED":

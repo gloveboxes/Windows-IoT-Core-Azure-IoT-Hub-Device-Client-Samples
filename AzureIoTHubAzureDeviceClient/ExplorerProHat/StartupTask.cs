@@ -43,9 +43,11 @@ namespace IoTHubExplorerProHat
                         matrix.FrameClear();
                         matrix.FrameDraw();
 
-                        await Task.Delay(20000); // don't leave this running for too long at this rate as you'll quickly consume your free daily Iot Hub Message limit
+                        await Task.Delay(telemetry.Cadence); // don't leave this running for too long at this rate as you'll quickly consume your free daily Iot Hub Message limit
                     }
-                    catch { hat.Light(Colour.Red).On(); }
+                    catch {
+                        telemetry.Exceptions++;
+                        hat.Light(Colour.Red).On(); }
                 }
             });
         }
@@ -61,8 +63,10 @@ namespace IoTHubExplorerProHat
                 await deviceClient.CompleteAsync(receivedMessage);
                 string command = Encoding.ASCII.GetString(receivedMessage.GetBytes()).ToUpper();
 
+                if (telemetry.SetCadence(command)) { continue; }
+
                 switch (command) {
-                    //case "RED":
+                    //case "RED":  // reserved to show exception status
                     //    hat.Light(Colour.Red).On();
                     //    break;
                     case "GREEN":
