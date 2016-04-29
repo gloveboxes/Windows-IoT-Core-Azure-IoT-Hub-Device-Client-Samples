@@ -24,6 +24,7 @@ namespace IoTHubPiSense
         Telemetry telemetry;
         bool exceptionHappened = false;
         TinyFont tinyFont = new TinyFont();
+        Color statusColour = Colors.Blue;
 
         public async void Run(IBackgroundTaskInstance taskInstance) {
             deferral = taskInstance.GetDeferral();
@@ -36,7 +37,7 @@ namespace IoTHubPiSense
             var result = Task.Run(async () => {
                 while (true) {
                     try {
-                        display.Fill(Colors.Blue);
+                        display.Fill(statusColour);
                         display.Update();
 
                         hat.Sensors.HumiditySensor.Update();
@@ -73,30 +74,25 @@ namespace IoTHubPiSense
                 string command = Encoding.ASCII.GetString(receivedMessage.GetBytes()).ToUpper();
 
                 switch (command) {
-                    case "RED":
-                        display.Fill(Colors.Red);
-                        display.Update();
+                    case "RED":                        
+                        statusColour = Colors.Red;                       
                         break;
                     case "GREEN":
-                        display.Fill(Colors.Green);
-                        display.Update();
+                        statusColour = Colors.Green;
                         break;
                     case "BLUE":
-                        display.Fill(Colors.Blue);
-                        display.Update();
+                        statusColour = Colors.Blue;
                         break;
                     case "YELLOW":
-                        display.Fill(Colors.Yellow);
-                        display.Update();
-                        break;
-                    case "OFF":
-                        display.Clear();
-                        display.Update();
+                        statusColour = Colors.Yellow;
                         break;
                     default:
-                        System.Diagnostics.Debug.WriteLine("Unrecognized command: {0}", command);
+                        statusColour = Colors.Purple;
                         break;
                 }
+
+                display.Fill(statusColour);
+                display.Update();
             }
         }
     }
