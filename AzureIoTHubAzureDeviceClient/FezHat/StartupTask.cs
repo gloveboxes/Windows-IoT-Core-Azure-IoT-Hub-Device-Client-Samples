@@ -21,6 +21,8 @@ namespace IoTHubFezHat
         public async void Run(IBackgroundTaskInstance taskInstance) {
             deferral = taskInstance.GetDeferral();
             hat = await FEZHAT.CreateAsync();
+            hat.D2.TurnOff();
+            hat.D3.TurnOff();
 
             telemetry = new IoTHubFezHat.Telemetry("Sydney", "RPiFez");
 
