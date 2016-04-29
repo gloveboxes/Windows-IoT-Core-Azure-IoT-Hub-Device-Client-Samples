@@ -96,7 +96,6 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Led.cs" />
     <Compile Include="SecurityManager.cs" />
     <Compile Include="Telemetry.cs" />
     <Compile Include="StartupTask.cs" />

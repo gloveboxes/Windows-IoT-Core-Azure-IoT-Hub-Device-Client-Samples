@@ -7,7 +7,8 @@ using System.Text;
 using Windows.Security.Cryptography;
 using Windows.Security.Cryptography.Core;
 
-namespace IoTHubMqttClient {
+namespace IoTHubExplorerProHat
+{
     public sealed class SecurityManager {
 
         public string hubAddress { get; private set; }

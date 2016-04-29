@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExplorerHatPro", "ExplorerHatPro\ExplorerHatPro.csproj", "{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoTHubPiSense", "IoTHubPiSense\IoTHubPiSense.csproj", "{2DA130CA-9FB4-48A7-9453-90230954C076}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FezHat", "FezHat\FezHat.csproj", "{6006EA60-23BE-4D21-8DB0-E585C30714E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExplorerProHat", "ExplorerProHat\ExplorerProHat.csproj", "{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,24 +19,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}.Debug|ARM.ActiveCfg = Debug|ARM
-		{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}.Debug|ARM.Build.0 = Debug|ARM
-		{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}.Debug|ARM.Deploy.0 = Debug|ARM
-		{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}.Debug|x64.ActiveCfg = Debug|x64
-		{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}.Debug|x64.Build.0 = Debug|x64
-		{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}.Debug|x64.Deploy.0 = Debug|x64
-		{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}.Debug|x86.ActiveCfg = Debug|x86
-		{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}.Debug|x86.Build.0 = Debug|x86
-		{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}.Debug|x86.Deploy.0 = Debug|x86
-		{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}.Release|ARM.ActiveCfg = Release|ARM
-		{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}.Release|ARM.Build.0 = Release|ARM
-		{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}.Release|ARM.Deploy.0 = Release|ARM
-		{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}.Release|x64.ActiveCfg = Release|x64
-		{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}.Release|x64.Build.0 = Release|x64
-		{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}.Release|x64.Deploy.0 = Release|x64
-		{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}.Release|x86.ActiveCfg = Release|x86
-		{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}.Release|x86.Build.0 = Release|x86
-		{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}.Release|x86.Deploy.0 = Release|x86
 		{2DA130CA-9FB4-48A7-9453-90230954C076}.Debug|ARM.ActiveCfg = Debug|ARM
 		{2DA130CA-9FB4-48A7-9453-90230954C076}.Debug|ARM.Build.0 = Debug|ARM
 		{2DA130CA-9FB4-48A7-9453-90230954C076}.Debug|ARM.Deploy.0 = Debug|ARM
@@ -73,6 +55,24 @@ Global
 		{6006EA60-23BE-4D21-8DB0-E585C30714E7}.Release|x86.ActiveCfg = Release|x86
 		{6006EA60-23BE-4D21-8DB0-E585C30714E7}.Release|x86.Build.0 = Release|x86
 		{6006EA60-23BE-4D21-8DB0-E585C30714E7}.Release|x86.Deploy.0 = Release|x86
+		{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}.Debug|ARM.ActiveCfg = Debug|ARM
+		{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}.Debug|ARM.Build.0 = Debug|ARM
+		{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}.Debug|ARM.Deploy.0 = Debug|ARM
+		{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}.Debug|x64.ActiveCfg = Debug|x64
+		{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}.Debug|x64.Build.0 = Debug|x64
+		{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}.Debug|x64.Deploy.0 = Debug|x64
+		{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}.Debug|x86.ActiveCfg = Debug|x86
+		{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}.Debug|x86.Build.0 = Debug|x86
+		{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}.Debug|x86.Deploy.0 = Debug|x86
+		{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}.Release|ARM.ActiveCfg = Release|ARM
+		{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}.Release|ARM.Build.0 = Release|ARM
+		{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}.Release|ARM.Deploy.0 = Release|ARM
+		{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}.Release|x64.ActiveCfg = Release|x64
+		{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}.Release|x64.Build.0 = Release|x64
+		{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}.Release|x64.Deploy.0 = Release|x64
+		{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}.Release|x86.ActiveCfg = Release|x86
+		{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}.Release|x86.Build.0 = Release|x86
+		{E4EA16DC-1005-46C6-92FD-2FFA091CF7A0}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

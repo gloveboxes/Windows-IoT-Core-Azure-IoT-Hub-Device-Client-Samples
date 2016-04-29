@@ -2,7 +2,8 @@
 using System;
 using System.Text;
 
-namespace IoTHubMqttClient {
+namespace IoTHubExplorerProHat
+{
     public sealed class Telemetry {
 
         static int msgCount = 0;

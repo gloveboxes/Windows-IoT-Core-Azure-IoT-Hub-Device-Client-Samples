@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using Windows.ApplicationModel.Background;
 using static Glovebox.IoT.Devices.HATs.ExplorerHatPro;
 
-namespace IoTHubMqttClient
+namespace IoTHubExplorerProHat
 {
     public sealed class StartupTask : IBackgroundTask
     {

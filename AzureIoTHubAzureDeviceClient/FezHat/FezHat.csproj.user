@@ -8,4 +8,7 @@
     <RemoteDebugMachine>RPiSC</RemoteDebugMachine>
     <CreateCleanLayout>false</CreateCleanLayout>
   </PropertyGroup>
+  <PropertyGroup>
+    <ProjectView>ProjectFiles</ProjectView>
+  </PropertyGroup>
 </Project>
