@@ -54,39 +54,42 @@ namespace IoTHubExplorerProHat
 
         private async void ReceiveC2dAsync(DeviceClient deviceClient) {
             while (true) {
-                Message receivedMessage = await deviceClient.ReceiveAsync();
-                if (receivedMessage == null) {
-                    await Task.Delay(2000);
-                    continue;
+                try {
+                    Message receivedMessage = await deviceClient.ReceiveAsync();
+                    if (receivedMessage == null) {
+                        await Task.Delay(2000);
+                        continue;
+                    }
+
+                    await deviceClient.CompleteAsync(receivedMessage);
+                    string command = Encoding.ASCII.GetString(receivedMessage.GetBytes()).ToUpper();
+
+                    if (telemetry.SetCadence(command)) { continue; }
+
+                    switch (command) {
+                        //case "RED":  // reserved to show exception status
+                        //    hat.Light(Colour.Red).On();
+                        //    break;
+                        case "GREEN":
+                            hat.Light(Colour.Green).On();
+                            break;
+                        case "BLUE":
+                            hat.Light(Colour.Blue).On();
+                            break;
+                        case "YELLOW":
+                            hat.Light(Colour.Yellow).On();
+                            break;
+                        case "OFF":
+                            for (int l = 0; l < hat.ColourCount; l++) {
+                                hat.Light((Colour)l).Off();
+                            }
+                            break;
+                        default:
+                            System.Diagnostics.Debug.WriteLine("Unrecognized command: {0}", command);
+                            break;
+                    }
                 }
-
-                await deviceClient.CompleteAsync(receivedMessage);
-                string command = Encoding.ASCII.GetString(receivedMessage.GetBytes()).ToUpper();
-
-                if (telemetry.SetCadence(command)) { continue; }
-
-                switch (command) {
-                    //case "RED":  // reserved to show exception status
-                    //    hat.Light(Colour.Red).On();
-                    //    break;
-                    case "GREEN":
-                        hat.Light(Colour.Green).On();
-                        break;
-                    case "BLUE":
-                        hat.Light(Colour.Blue).On();
-                        break;
-                    case "YELLOW":
-                        hat.Light(Colour.Yellow).On();
-                        break;
-                    case "OFF":
-                        for (int l = 0; l < hat.ColourCount; l++) {
-                            hat.Light((Colour)l).Off();
-                        }
-                        break;
-                    default:
-                        System.Diagnostics.Debug.WriteLine("Unrecognized command: {0}", command);
-                        break;
-                }
+                catch { telemetry.Exceptions++; }
             }
         }
     }

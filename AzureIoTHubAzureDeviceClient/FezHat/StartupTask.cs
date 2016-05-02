@@ -48,37 +48,40 @@ namespace IoTHubFezHat
 
         private async void ReceiveC2dAsync(DeviceClient deviceClient) {
             while (true) {
-                Message receivedMessage = await deviceClient.ReceiveAsync();
-                if (receivedMessage == null) {
-                    await Task.Delay(2000);
-                    continue;
+                try {
+                    Message receivedMessage = await deviceClient.ReceiveAsync();
+                    if (receivedMessage == null) {
+                        await Task.Delay(2000);
+                        continue;
+                    }
+
+                    await deviceClient.CompleteAsync(receivedMessage);
+                    string command = Encoding.ASCII.GetString(receivedMessage.GetBytes()).ToUpper();
+
+                    if (telemetry.SetCadence(command)) { continue; }
+
+                    switch (command) {
+                        case "RED":
+                            hat.D2.Color = new FEZHAT.Color(255, 0, 0);
+                            break;
+                        case "GREEN":
+                            hat.D2.Color = new FEZHAT.Color(0, 255, 0);
+                            break;
+                        case "BLUE":
+                            hat.D2.Color = new FEZHAT.Color(0, 0, 255);
+                            break;
+                        case "YELLOW":
+                            hat.D2.Color = new FEZHAT.Color(255, 255, 0);
+                            break;
+                        case "OFF":
+                            hat.D2.TurnOff();
+                            break;
+                        default:
+                            System.Diagnostics.Debug.WriteLine("Unrecognized command: {0}", command);
+                            break;
+                    }
                 }
-
-                await deviceClient.CompleteAsync(receivedMessage);
-                string command = Encoding.ASCII.GetString(receivedMessage.GetBytes()).ToUpper();
-
-                if (telemetry.SetCadence(command)) { continue; }
-
-                switch (command) {
-                    case "RED":
-                        hat.D2.Color = new FEZHAT.Color(255, 0, 0);
-                        break;
-                    case "GREEN":
-                        hat.D2.Color = new FEZHAT.Color(0, 255, 0);
-                        break;
-                    case "BLUE":
-                        hat.D2.Color = new FEZHAT.Color(0, 0, 255);
-                        break;
-                    case "YELLOW":
-                        hat.D2.Color = new FEZHAT.Color(255, 255, 0);
-                        break;
-                    case "OFF":
-                        hat.D2.TurnOff();
-                        break;
-                    default:
-                        System.Diagnostics.Debug.WriteLine("Unrecognized command: {0}", command);
-                        break;
-                }
+                catch { telemetry.Exceptions++; }
             }
         }
     }

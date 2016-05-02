@@ -1,17 +1,18 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Text;
+using System.Threading;
 
 namespace IoTHubPiSense
 {
-    public sealed class Telemetry {
+    public delegate void MeasureMethod();
 
+    public sealed class Telemetry
+    {
+        Timer timer;
+        bool publishing = false;
+        MeasureMethod measureMethod;
         static int msgCount = 0;
-
-        public Telemetry(string geo, string deviceId) {
-            this.Geo = geo;
-            this.Dev = deviceId;
-        }
 
         public string Geo { get; set; }
         public string Celsius { get; set; }
@@ -23,6 +24,14 @@ namespace IoTHubPiSense
         public int Cadence { get; set; } = 60000;
         public int Exceptions { get; set; }
 
+
+        public Telemetry(string geo, string deviceId, MeasureMethod measureMethod) {
+            this.Geo = geo;
+            this.Dev = deviceId;
+            this.measureMethod = measureMethod;
+            timer = new Timer(ActionTimer, null, 1000, Cadence);
+        }
+
         public byte[] ToJson(double temperature, double light, double hpa, double humidity) {
             Celsius = RoundMeasurement(temperature, 2).ToString();
             Light = RoundMeasurement(light, 2).ToString();
@@ -31,8 +40,17 @@ namespace IoTHubPiSense
             Id = ++msgCount;
             return Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(this));
         }
+
         private string RoundMeasurement(double value, int places) {
             return Math.Round(value, places).ToString();
+        }
+
+        void ActionTimer(object state) {
+            if (!publishing) {
+                publishing = true;
+                measureMethod();
+                publishing = false;
+            }
         }
 
         public bool SetCadence(string cmd) {
@@ -40,11 +58,13 @@ namespace IoTHubPiSense
             if (ushort.TryParse(cmd, out newCadence)) {
                 if (newCadence > 0) {
                     Cadence = newCadence * 1000;
+                    timer.Change(0, Cadence);
                 }
                 return true;
             }
             return false;
         }
+
 
 
 
