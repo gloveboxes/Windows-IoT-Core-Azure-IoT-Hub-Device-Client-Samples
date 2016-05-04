@@ -1,5 +1,6 @@
 ﻿using Emmellsoft.IoT.Rpi.SenseHat;
 using Emmellsoft.IoT.Rpi.SenseHat.Fonts.SingleColor;
+using IotServices;
 using Microsoft.Azure.Devices.Client;
 using System;
 using System.Text;
@@ -52,8 +53,6 @@ namespace IoTHubPiSense
                 }
 
                 display.Update();
-
-                await Task.Delay(telemetry.Cadence); // don't leave this running for too long at this rate as you'll quickly consume your free daily Iot Hub Message limit
             }
             catch { telemetry.Exceptions++; }
         }
@@ -70,7 +69,7 @@ namespace IoTHubPiSense
                     await deviceClient.CompleteAsync(receivedMessage);
                     string command = Encoding.ASCII.GetString(receivedMessage.GetBytes()).ToUpper();
 
-                    if (telemetry.SetCadence(command)) { continue; }
+                    if (telemetry.SetSampleRateInSeconds(command)) { continue; }
 
                     switch (command) {
                         case "RED":
