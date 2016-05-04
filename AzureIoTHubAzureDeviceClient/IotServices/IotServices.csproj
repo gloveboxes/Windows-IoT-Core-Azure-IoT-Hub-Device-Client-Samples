@@ -109,6 +109,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scheduler.cs" />
+    <Compile Include="SecurityManager.cs" />
     <Compile Include="Telemetry.cs" />
     <EmbeddedResource Include="Properties\IotServices.rd.xml" />
   </ItemGroup>

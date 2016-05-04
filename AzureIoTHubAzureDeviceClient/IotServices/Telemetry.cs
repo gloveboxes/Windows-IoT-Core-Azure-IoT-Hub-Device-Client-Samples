@@ -2,16 +2,12 @@
 using System;
 using System.Text;
 
-namespace IoTHubExplorerProHat
+namespace IotServices
 {
-    public sealed class Telemetry {
 
+    public class Telemetry : Scheduler
+    {
         static int msgCount = 0;
-
-        public Telemetry(string geo, string deviceId) {
-            this.Geo = geo;
-            this.Dev = deviceId;
-        }
 
         public string Geo { get; set; }
         public string Celsius { get; set; }
@@ -20,8 +16,13 @@ namespace IoTHubExplorerProHat
         public string Light { get; set; }
         public string Dev { get; set; }
         public int Id { get; set; }
-        public int Cadence { get; set; } = 60000;
         public int Exceptions { get; set; }
+
+
+        public Telemetry(string geo, string deviceId, MeasureMethod measureMethod) : base(measureMethod) {
+            this.Geo = geo;
+            this.Dev = deviceId;
+        }
 
         public byte[] ToJson(double temperature, double light, double hpa, double humidity) {
             Celsius = RoundMeasurement(temperature, 2).ToString();
@@ -31,19 +32,9 @@ namespace IoTHubExplorerProHat
             Id = ++msgCount;
             return Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(this));
         }
+
         private string RoundMeasurement(double value, int places) {
             return Math.Round(value, places).ToString();
-        }
-
-        public bool SetCadence(string cmd) {
-            ushort newCadence = 0;
-            if (ushort.TryParse(cmd, out newCadence)) {
-                if (newCadence > 0) {
-                    Cadence = newCadence * 1000;
-                }
-                return true;
-            }
-            return false;
         }
     }
 }

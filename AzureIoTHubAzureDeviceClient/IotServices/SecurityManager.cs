@@ -7,7 +7,7 @@ using System.Text;
 using Windows.Security.Cryptography;
 using Windows.Security.Cryptography.Core;
 
-namespace IoTHubExplorerProHat
+namespace IotServices
 {
     public sealed class SecurityManager {
 

@@ -3,6 +3,7 @@ using Glovebox.Graphics.Drivers;
 using Glovebox.IoT.Devices.Converters;
 using Glovebox.IoT.Devices.HATs;
 using Glovebox.IoT.Devices.Sensors;
+using IotServices;
 using Microsoft.Azure.Devices.Client;
 using System;
 using System.Text;
@@ -27,30 +28,32 @@ namespace IoTHubExplorerProHat
         public void Run(IBackgroundTaskInstance taskInstance) {
             deferral = taskInstance.GetDeferral();
 
-            telemetry = new Telemetry("Sydney", "RPi3DG");
+            telemetry = new Telemetry("Sydney", "RPi3DG", Measure);
 
             ReceiveC2dAsync(deviceClient);
 
-            var result = Task.Run(async () => {
-                while (true) {
-                    try {
-                        matrix.DrawSymbol(Glovebox.Graphics.Grid.Grid8x8.Symbols.HourGlass);
-                        matrix.FrameDraw();
-
-                        var content = new Message(telemetry.ToJson(bme280.Temperature.DegreesCelsius, hat.AnalogRead(ExplorerHatPro.AnalogPin.Ain2).ReadRatio(), bme280.Pressure.Hectopascals, bme280.Humidity));
-                        await deviceClient.SendEventAsync(content);
-
-                        matrix.FrameClear();
-                        matrix.FrameDraw();
-
-                        await Task.Delay(telemetry.Cadence); // don't leave this running for too long at this rate as you'll quickly consume your free daily Iot Hub Message limit
-                    }
-                    catch {
-                        telemetry.Exceptions++;
-                        hat.Light(Colour.Red).On(); }
-                }
-            });
         }
+
+
+        async void Measure() {
+            try {
+                matrix.DrawSymbol(Glovebox.Graphics.Grid.Grid8x8.Symbols.HourGlass);
+                matrix.FrameDraw();
+
+                var content = new Message(telemetry.ToJson(bme280.Temperature.DegreesCelsius, hat.AnalogRead(ExplorerHatPro.AnalogPin.Ain2).ReadRatio(), bme280.Pressure.Hectopascals, bme280.Humidity));
+                await deviceClient.SendEventAsync(content);
+
+                matrix.FrameClear();
+                matrix.FrameDraw();
+
+            }
+            catch {
+                telemetry.Exceptions++;
+                hat.Light(Colour.Red).On();
+            }
+        }
+
+
 
         private async void ReceiveC2dAsync(DeviceClient deviceClient) {
             while (true) {
@@ -64,7 +67,7 @@ namespace IoTHubExplorerProHat
                     await deviceClient.CompleteAsync(receivedMessage);
                     string command = Encoding.ASCII.GetString(receivedMessage.GetBytes()).ToUpper();
 
-                    if (telemetry.SetCadence(command)) { continue; }
+                    if (telemetry.SetSampleRateInSeconds(command)) { continue; }
 
                     switch (command) {
                         //case "RED":  // reserved to show exception status
