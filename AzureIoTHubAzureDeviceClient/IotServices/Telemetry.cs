@@ -19,7 +19,7 @@ namespace IotServices
         public int Exceptions { get; set; }
 
 
-        public Telemetry(string geo, string deviceId, MeasureMethod measureMethod) : base(measureMethod) {
+        public Telemetry(string geo, string deviceId, MeasureMethod measureMethod = null) : base(measureMethod) {
             this.Geo = geo;
             this.Dev = deviceId;
         }

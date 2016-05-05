@@ -3,6 +3,7 @@ using Emmellsoft.IoT.Rpi.SenseHat.Fonts.SingleColor;
 using IotServices;
 using Microsoft.Azure.Devices.Client;
 using System;
+using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Background;
@@ -23,6 +24,8 @@ namespace IoTHubPiSense
         TinyFont tinyFont = new TinyFont();
         Color statusColour = Colors.Blue;
 
+        ObservableQueue<String> q = new ObservableQueue<string>();
+        
 
         public async void Run(IBackgroundTaskInstance taskInstance) {
             deferral = taskInstance.GetDeferral();
@@ -30,8 +33,17 @@ namespace IoTHubPiSense
             hat = await SenseHatFactory.GetSenseHat().ConfigureAwait(false);
             display = hat.Display;
 
+            q.Dequeued += Q_Dequeued;
+
             ReceiveC2dAsync(deviceClient);
 
+            while (true) {
+                q.Dequeue();
+            }
+        }
+
+        private void Q_Dequeued(object sender, ItemEventArgs<string> e) {
+            Debug.WriteLine(e.Item);
         }
 
         async void Measure() {
@@ -68,6 +80,8 @@ namespace IoTHubPiSense
 
                     await deviceClient.CompleteAsync(receivedMessage);
                     string command = Encoding.ASCII.GetString(receivedMessage.GetBytes()).ToUpper();
+
+                    q.Enqueue(command);
 
                     if (telemetry.SetSampleRateInSeconds(command)) { continue; }
 
