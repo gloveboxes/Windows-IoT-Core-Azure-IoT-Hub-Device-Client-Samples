@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExplorerProHAT", "ExplorerP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IotServices", "IotServices\IotServices.csproj", "{B150FBAB-ED29-44EE-BDAE-BADC2B0E1A3F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prototype", "Prototype\Prototype.csproj", "{FA5EE185-6A0F-4C86-8F36-EAC756E9880E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,26 @@ Global
 		{B150FBAB-ED29-44EE-BDAE-BADC2B0E1A3F}.Release|x64.Build.0 = Release|x64
 		{B150FBAB-ED29-44EE-BDAE-BADC2B0E1A3F}.Release|x86.ActiveCfg = Release|x86
 		{B150FBAB-ED29-44EE-BDAE-BADC2B0E1A3F}.Release|x86.Build.0 = Release|x86
+		{FA5EE185-6A0F-4C86-8F36-EAC756E9880E}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{FA5EE185-6A0F-4C86-8F36-EAC756E9880E}.Debug|ARM.ActiveCfg = Debug|ARM
+		{FA5EE185-6A0F-4C86-8F36-EAC756E9880E}.Debug|ARM.Build.0 = Debug|ARM
+		{FA5EE185-6A0F-4C86-8F36-EAC756E9880E}.Debug|ARM.Deploy.0 = Debug|ARM
+		{FA5EE185-6A0F-4C86-8F36-EAC756E9880E}.Debug|x64.ActiveCfg = Debug|x64
+		{FA5EE185-6A0F-4C86-8F36-EAC756E9880E}.Debug|x64.Build.0 = Debug|x64
+		{FA5EE185-6A0F-4C86-8F36-EAC756E9880E}.Debug|x64.Deploy.0 = Debug|x64
+		{FA5EE185-6A0F-4C86-8F36-EAC756E9880E}.Debug|x86.ActiveCfg = Debug|x86
+		{FA5EE185-6A0F-4C86-8F36-EAC756E9880E}.Debug|x86.Build.0 = Debug|x86
+		{FA5EE185-6A0F-4C86-8F36-EAC756E9880E}.Debug|x86.Deploy.0 = Debug|x86
+		{FA5EE185-6A0F-4C86-8F36-EAC756E9880E}.Release|Any CPU.ActiveCfg = Release|x86
+		{FA5EE185-6A0F-4C86-8F36-EAC756E9880E}.Release|ARM.ActiveCfg = Release|ARM
+		{FA5EE185-6A0F-4C86-8F36-EAC756E9880E}.Release|ARM.Build.0 = Release|ARM
+		{FA5EE185-6A0F-4C86-8F36-EAC756E9880E}.Release|ARM.Deploy.0 = Release|ARM
+		{FA5EE185-6A0F-4C86-8F36-EAC756E9880E}.Release|x64.ActiveCfg = Release|x64
+		{FA5EE185-6A0F-4C86-8F36-EAC756E9880E}.Release|x64.Build.0 = Release|x64
+		{FA5EE185-6A0F-4C86-8F36-EAC756E9880E}.Release|x64.Deploy.0 = Release|x64
+		{FA5EE185-6A0F-4C86-8F36-EAC756E9880E}.Release|x86.ActiveCfg = Release|x86
+		{FA5EE185-6A0F-4C86-8F36-EAC756E9880E}.Release|x86.Build.0 = Release|x86
+		{FA5EE185-6A0F-4C86-8F36-EAC756E9880E}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
