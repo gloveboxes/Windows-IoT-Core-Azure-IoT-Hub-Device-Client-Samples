@@ -1,5 +1,6 @@
 ﻿
 using GHIElectronics.UWP.Shields;
+using IotServices;
 using Microsoft.Azure.Devices.Client;
 using System;
 using System.Text;
@@ -18,33 +19,31 @@ namespace IoTHubFezHat
 
         public async void Run(IBackgroundTaskInstance taskInstance) {
             deferral = taskInstance.GetDeferral();
+
             hat = await FEZHAT.CreateAsync();
             hat.D2.TurnOff();
             hat.D3.TurnOff();
 
-            telemetry = new IoTHubFezHat.Telemetry("Sydney", "RPiFez");
+            telemetry = new Telemetry("Sydney", "RPiFez", Measure, 30);
 
             ReceiveC2dAsync(deviceClient);
-
-            var result = Task.Run(async () => {
-                while (true) {
-                    try {
-
-                        hat.D3.Color = new FEZHAT.Color(0, 255, 0);
-
-                        var content = new Message(telemetry.ToJson(hat.GetTemperature(), hat.GetLightLevel(), 0, 0));
-                        await deviceClient.SendEventAsync(content);
-
-                        hat.D3.TurnOff();
-
-                        await Task.Delay(telemetry.Cadence); // don't leave this running for too long at this rate as you'll quickly consume your free daily Iot Hub Message limit
-                    }
-                    catch {
-                        telemetry.Exceptions++;
-                        hat.D2.Color = new FEZHAT.Color(127, 0, 255); }  //purple http://rapidtables.com/web/color/RGB_Color.htm
-                }
-            });
         }
+
+        async void Measure() {
+            try {
+                hat.D3.Color = new FEZHAT.Color(0, 255, 0);
+
+                var content = new Message(telemetry.ToJson(hat.GetTemperature(), hat.GetLightLevel(), 0, 0));
+                await deviceClient.SendEventAsync(content);
+
+                hat.D3.TurnOff();
+            }
+            catch {
+                telemetry.Exceptions++;
+                hat.D2.Color = new FEZHAT.Color(127, 0, 255);
+            }  //purple http://rapidtables.com/web/color/RGB_Color.htm
+        }
+   
 
         private async void ReceiveC2dAsync(DeviceClient deviceClient) {
             while (true) {
@@ -58,7 +57,7 @@ namespace IoTHubFezHat
                     await deviceClient.CompleteAsync(receivedMessage);
                     string command = Encoding.ASCII.GetString(receivedMessage.GetBytes()).ToUpper();
 
-                    if (telemetry.SetCadence(command)) { continue; }
+                    if (telemetry.SetSampleRateInSeconds(command)) { continue; }
 
                     switch (command) {
                         case "RED":

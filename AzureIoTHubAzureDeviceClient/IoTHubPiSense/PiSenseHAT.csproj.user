@@ -17,4 +17,7 @@
     <AuthenticationMode>Universal</AuthenticationMode>
     <RemoteDebugEnabled>true</RemoteDebugEnabled>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <AuthenticationMode>Windows</AuthenticationMode>
+  </PropertyGroup>
 </Project>

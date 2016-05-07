@@ -19,9 +19,10 @@ namespace IotServices
             }
         }
 
-        public Scheduler(MeasureMethod measureMethod) {
+        public Scheduler(MeasureMethod measureMethod, int sampleRateInSeconds) {
             if (measureMethod == null) { return; }
-            this.measureMethod = measureMethod;         
+            this.measureMethod = measureMethod;
+            this.sampleRateInSeconds = sampleRateInSeconds;  
             timer = new Timer(ActionTimer, null, 0, SampleRateInSeconds * 1000);
         }
 
