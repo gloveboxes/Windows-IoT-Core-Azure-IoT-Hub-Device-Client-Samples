@@ -10,9 +10,9 @@ namespace IotServices
     
     public class Led
     {
-        ObservableQueue<String> q;
+        ObservableConcurrentQueue<String> q;
 
-        public Led(ObservableQueue<String> q) {
+        public Led(ObservableConcurrentQueue<String> q) {
             this.q = q;
             q.Dequeued += Q_Dequeued;
         }

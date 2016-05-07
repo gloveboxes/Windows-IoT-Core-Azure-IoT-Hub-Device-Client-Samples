@@ -3,8 +3,6 @@ using GHIElectronics.UWP.Shields;
 using IotServices;
 using Microsoft.Azure.Devices.Client;
 using System;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.ApplicationModel.Background;
 
 namespace IoTHubFezHat
@@ -14,6 +12,7 @@ namespace IoTHubFezHat
         BackgroundTaskDeferral deferral;
 
         DeviceClient deviceClient = DeviceClient.CreateFromConnectionString("HostName=glovebox-iot-hub.azure-devices.net;DeviceId=RPiFez;SharedAccessKey=VHWMLDbUZ7EOsbeS5NfO560+xFjhrMYh5Q1Bga4wQHg=");
+        IoTHubCommand<String> iotHubCommand;
         Telemetry telemetry;
         FEZHAT hat;
 
@@ -24,12 +23,13 @@ namespace IoTHubFezHat
             hat.D2.TurnOff();
             hat.D3.TurnOff();
 
-            telemetry = new Telemetry("Sydney", "RPiFez", Measure, 30);
+            telemetry = new Telemetry("Sydney", "RPiFez", Publish, 30);
 
-            ReceiveC2dAsync(deviceClient);
+            iotHubCommand = new IoTHubCommand<string>(deviceClient, telemetry);
+            iotHubCommand.CommandReceived += Commanding_CommandReceived;
         }
 
-        async void Measure() {
+        async void Publish() {
             if (hat == null || deviceClient == null) { return; }
 
             try {
@@ -43,43 +43,26 @@ namespace IoTHubFezHat
             catch { telemetry.Exceptions++; }
         }
 
-
-        private async void ReceiveC2dAsync(DeviceClient deviceClient) {
-            while (true) {
-                try {
-                    Message receivedMessage = await deviceClient.ReceiveAsync();
-                    if (receivedMessage == null) {
-                        await Task.Delay(2000);
-                        continue;
-                    }
-
-                    await deviceClient.CompleteAsync(receivedMessage);
-                    string command = Encoding.ASCII.GetString(receivedMessage.GetBytes()).ToUpper();
-
-                    if (telemetry.SetSampleRateInSeconds(command)) { continue; }
-
-                    switch (command) {
-                        case "RED":
-                            hat.D2.Color = new FEZHAT.Color(255, 0, 0);
-                            break;
-                        case "GREEN":
-                            hat.D2.Color = new FEZHAT.Color(0, 255, 0);
-                            break;
-                        case "BLUE":
-                            hat.D2.Color = new FEZHAT.Color(0, 0, 255);
-                            break;
-                        case "YELLOW":
-                            hat.D2.Color = new FEZHAT.Color(255, 255, 0);
-                            break;
-                        case "OFF":
-                            hat.D2.TurnOff();
-                            break;
-                        default:
-                            System.Diagnostics.Debug.WriteLine("Unrecognized command: {0}", command);
-                            break;
-                    }
-                }
-                catch { telemetry.Exceptions++; }
+        private void Commanding_CommandReceived(object sender, CommandEventArgs<string> e) {
+            switch (e.Item.ToUpper()) {
+                case "RED":
+                    hat.D2.Color = new FEZHAT.Color(255, 0, 0);
+                    break;
+                case "GREEN":
+                    hat.D2.Color = new FEZHAT.Color(0, 255, 0);
+                    break;
+                case "BLUE":
+                    hat.D2.Color = new FEZHAT.Color(0, 0, 255);
+                    break;
+                case "YELLOW":
+                    hat.D2.Color = new FEZHAT.Color(255, 255, 0);
+                    break;
+                case "OFF":
+                    hat.D2.TurnOff();
+                    break;
+                default:
+                    System.Diagnostics.Debug.WriteLine("Unrecognized command: {0}", e.Item);
+                    break;
             }
         }
     }

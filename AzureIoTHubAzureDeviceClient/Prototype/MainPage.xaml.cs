@@ -13,7 +13,7 @@ namespace Prototype
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        ObservableQueue<String> q = new ObservableQueue<string>();
+        ObservableConcurrentQueue<String> q = new ObservableConcurrentQueue<string>();
         Timer dataGeneratoreTimer;
         int QCount = 0;
         Led l1;

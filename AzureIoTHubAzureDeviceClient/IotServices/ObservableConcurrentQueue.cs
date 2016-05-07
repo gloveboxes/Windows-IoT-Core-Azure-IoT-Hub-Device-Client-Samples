@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -14,7 +12,7 @@ namespace IotServices
     }
 
 
-    public class ObservableQueue<T>
+    public class ObservableConcurrentQueue<T>
     {
         ManualResetEvent dequeueEvent = new ManualResetEvent(false);
 
@@ -25,7 +23,7 @@ namespace IotServices
 
         private readonly ConcurrentQueue<T> queue = new ConcurrentQueue<T>();
 
-        public ObservableQueue() {
+        public ObservableConcurrentQueue() {
             Task.Run(new Action (Pump));
         }
 

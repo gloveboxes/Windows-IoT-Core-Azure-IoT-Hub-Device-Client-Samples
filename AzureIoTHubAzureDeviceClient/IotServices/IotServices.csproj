@@ -107,8 +107,9 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IoTHubCommand.cs" />
     <Compile Include="Led.cs" />
-    <Compile Include="ObservableQueue.cs" />
+    <Compile Include="ObservableConcurrentQueue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scheduler.cs" />
     <Compile Include="SecurityManager.cs" />

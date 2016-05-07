@@ -24,7 +24,7 @@ namespace IoTHubPiSense
         TinyFont tinyFont = new TinyFont();
         Color statusColour = Colors.Blue;
 
-        ObservableQueue<String> q = new ObservableQueue<string>();
+        ObservableConcurrentQueue<String> q = new ObservableConcurrentQueue<string>();
         
 
         public async void Run(IBackgroundTaskInstance taskInstance) {
