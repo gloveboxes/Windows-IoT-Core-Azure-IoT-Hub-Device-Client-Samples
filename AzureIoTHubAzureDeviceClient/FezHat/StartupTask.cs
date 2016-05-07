@@ -11,11 +11,11 @@ namespace IoTHubFezHat
 {
     public sealed class StartupTask : IBackgroundTask
     {
-        private DeviceClient deviceClient = DeviceClient.CreateFromConnectionString("HostName=glovebox-iot-hub.azure-devices.net;DeviceId=RPiFez;SharedAccessKey=VHWMLDbUZ7EOsbeS5NfO560+xFjhrMYh5Q1Bga4wQHg=");
-
         BackgroundTaskDeferral deferral;
-        FEZHAT hat;
+
+        DeviceClient deviceClient = DeviceClient.CreateFromConnectionString("HostName=glovebox-iot-hub.azure-devices.net;DeviceId=RPiFez;SharedAccessKey=VHWMLDbUZ7EOsbeS5NfO560+xFjhrMYh5Q1Bga4wQHg=");
         Telemetry telemetry;
+        FEZHAT hat;
 
         public async void Run(IBackgroundTaskInstance taskInstance) {
             deferral = taskInstance.GetDeferral();
@@ -30,6 +30,8 @@ namespace IoTHubFezHat
         }
 
         async void Measure() {
+            if (hat == null || deviceClient == null) { return; }
+
             try {
                 hat.D3.Color = new FEZHAT.Color(0, 255, 0);
 
@@ -38,12 +40,9 @@ namespace IoTHubFezHat
 
                 hat.D3.TurnOff();
             }
-            catch {
-                telemetry.Exceptions++;
-                hat.D2.Color = new FEZHAT.Color(127, 0, 255);
-            }  //purple http://rapidtables.com/web/color/RGB_Color.htm
+            catch { telemetry.Exceptions++; }
         }
-   
+
 
         private async void ReceiveC2dAsync(DeviceClient deviceClient) {
             while (true) {
