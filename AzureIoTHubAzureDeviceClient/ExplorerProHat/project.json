@@ -5,7 +5,6 @@
     "IoT.Ntp": "1.0.0",
     "Microsoft.Azure.Devices.Client": "1.0.6",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
-    "Newtonsoft.Json": "8.0.3",
     "UnitsNet": "3.34.0"
   },
   "frameworks": {

@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IotServices", "IotServices\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prototype", "Prototype\Prototype.csproj", "{FA5EE185-6A0F-4C86-8F36-EAC756E9880E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrovePiHAT", "GrovePiHAT\GrovePiHAT.csproj", "{A07987DC-6BD3-41DB-A37B-A14403771C3C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -121,6 +123,26 @@ Global
 		{FA5EE185-6A0F-4C86-8F36-EAC756E9880E}.Release|x86.ActiveCfg = Release|x86
 		{FA5EE185-6A0F-4C86-8F36-EAC756E9880E}.Release|x86.Build.0 = Release|x86
 		{FA5EE185-6A0F-4C86-8F36-EAC756E9880E}.Release|x86.Deploy.0 = Release|x86
+		{A07987DC-6BD3-41DB-A37B-A14403771C3C}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{A07987DC-6BD3-41DB-A37B-A14403771C3C}.Debug|ARM.ActiveCfg = Debug|ARM
+		{A07987DC-6BD3-41DB-A37B-A14403771C3C}.Debug|ARM.Build.0 = Debug|ARM
+		{A07987DC-6BD3-41DB-A37B-A14403771C3C}.Debug|ARM.Deploy.0 = Debug|ARM
+		{A07987DC-6BD3-41DB-A37B-A14403771C3C}.Debug|x64.ActiveCfg = Debug|x64
+		{A07987DC-6BD3-41DB-A37B-A14403771C3C}.Debug|x64.Build.0 = Debug|x64
+		{A07987DC-6BD3-41DB-A37B-A14403771C3C}.Debug|x64.Deploy.0 = Debug|x64
+		{A07987DC-6BD3-41DB-A37B-A14403771C3C}.Debug|x86.ActiveCfg = Debug|x86
+		{A07987DC-6BD3-41DB-A37B-A14403771C3C}.Debug|x86.Build.0 = Debug|x86
+		{A07987DC-6BD3-41DB-A37B-A14403771C3C}.Debug|x86.Deploy.0 = Debug|x86
+		{A07987DC-6BD3-41DB-A37B-A14403771C3C}.Release|Any CPU.ActiveCfg = Release|x86
+		{A07987DC-6BD3-41DB-A37B-A14403771C3C}.Release|ARM.ActiveCfg = Release|ARM
+		{A07987DC-6BD3-41DB-A37B-A14403771C3C}.Release|ARM.Build.0 = Release|ARM
+		{A07987DC-6BD3-41DB-A37B-A14403771C3C}.Release|ARM.Deploy.0 = Release|ARM
+		{A07987DC-6BD3-41DB-A37B-A14403771C3C}.Release|x64.ActiveCfg = Release|x64
+		{A07987DC-6BD3-41DB-A37B-A14403771C3C}.Release|x64.Build.0 = Release|x64
+		{A07987DC-6BD3-41DB-A37B-A14403771C3C}.Release|x64.Deploy.0 = Release|x64
+		{A07987DC-6BD3-41DB-A37B-A14403771C3C}.Release|x86.ActiveCfg = Release|x86
+		{A07987DC-6BD3-41DB-A37B-A14403771C3C}.Release|x86.Build.0 = Release|x86
+		{A07987DC-6BD3-41DB-A37B-A14403771C3C}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

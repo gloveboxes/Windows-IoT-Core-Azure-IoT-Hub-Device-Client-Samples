@@ -1,11 +1,8 @@
 ﻿{
   "dependencies": {
-    "GHIElectronics.UWP.Shields.FEZHAT": "0.0.8",
     "GrovePi": "1.0.9",
-    "IoT.Ntp": "1.0.0",
     "Microsoft.Azure.Devices.Client": "1.0.6",
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
-    "UnitsNet": "3.34.0"
+    "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0"
   },
   "frameworks": {
     "uap10.0": {}

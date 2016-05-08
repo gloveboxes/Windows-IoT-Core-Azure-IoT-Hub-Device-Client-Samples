@@ -22,6 +22,14 @@
           "lib/.NETCore50/GHIElectronics.UWP.Shields.FEZHAT.dll": {}
         }
       },
+      "GrovePi/1.0.9": {
+        "compile": {
+          "lib/.NETCore50/GrovePi.dll": {}
+        },
+        "runtime": {
+          "lib/.NETCore50/GrovePi.dll": {}
+        }
+      },
       "IoT.Ntp/1.0.0": {
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0"
@@ -1884,6 +1892,14 @@
           "lib/.NETCore50/GHIElectronics.UWP.Shields.FEZHAT.dll": {}
         }
       },
+      "GrovePi/1.0.9": {
+        "compile": {
+          "lib/.NETCore50/GrovePi.dll": {}
+        },
+        "runtime": {
+          "lib/.NETCore50/GrovePi.dll": {}
+        }
+      },
       "IoT.Ntp/1.0.0": {
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0"
@@ -3607,6 +3623,14 @@
           "lib/.NETCore50/GHIElectronics.UWP.Shields.FEZHAT.dll": {}
         }
       },
+      "GrovePi/1.0.9": {
+        "compile": {
+          "lib/.NETCore50/GrovePi.dll": {}
+        },
+        "runtime": {
+          "lib/.NETCore50/GrovePi.dll": {}
+        }
+      },
       "IoT.Ntp/1.0.0": {
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0"
@@ -5286,6 +5310,14 @@
         },
         "runtime": {
           "lib/.NETCore50/GHIElectronics.UWP.Shields.FEZHAT.dll": {}
+        }
+      },
+      "GrovePi/1.0.9": {
+        "compile": {
+          "lib/.NETCore50/GrovePi.dll": {}
+        },
+        "runtime": {
+          "lib/.NETCore50/GrovePi.dll": {}
         }
       },
       "IoT.Ntp/1.0.0": {
@@ -7019,6 +7051,14 @@
           "lib/.NETCore50/GHIElectronics.UWP.Shields.FEZHAT.dll": {}
         }
       },
+      "GrovePi/1.0.9": {
+        "compile": {
+          "lib/.NETCore50/GrovePi.dll": {}
+        },
+        "runtime": {
+          "lib/.NETCore50/GrovePi.dll": {}
+        }
+      },
       "IoT.Ntp/1.0.0": {
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0"
@@ -8698,6 +8738,14 @@
         },
         "runtime": {
           "lib/.NETCore50/GHIElectronics.UWP.Shields.FEZHAT.dll": {}
+        }
+      },
+      "GrovePi/1.0.9": {
+        "compile": {
+          "lib/.NETCore50/GrovePi.dll": {}
+        },
+        "runtime": {
+          "lib/.NETCore50/GrovePi.dll": {}
         }
       },
       "IoT.Ntp/1.0.0": {
@@ -10431,6 +10479,14 @@
           "lib/.NETCore50/GHIElectronics.UWP.Shields.FEZHAT.dll": {}
         }
       },
+      "GrovePi/1.0.9": {
+        "compile": {
+          "lib/.NETCore50/GrovePi.dll": {}
+        },
+        "runtime": {
+          "lib/.NETCore50/GrovePi.dll": {}
+        }
+      },
       "IoT.Ntp/1.0.0": {
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0"
@@ -12112,6 +12168,16 @@
         "GHIElectronics.UWP.Shields.FEZHAT.nuspec",
         "content/Properties/GHIElectronics.UWP.Shields.FEZHAT.rd.xml",
         "lib/.NETCore50/GHIElectronics.UWP.Shields.FEZHAT.dll"
+      ]
+    },
+    "GrovePi/1.0.9": {
+      "sha512": "qe/MwmUK4xlG2HTRlbhxW2fCo4gTyHJeGHaGA23Y5esuJeWnWLioC5XbCqf8duxE70zaoXQmMzzHjPNUvnicwA==",
+      "type": "package",
+      "files": [
+        "GrovePi.1.0.9.nupkg.sha512",
+        "GrovePi.nuspec",
+        "content/Properties/client.winU.rd.xml",
+        "lib/.NETCore50/GrovePi.dll"
       ]
     },
     "IoT.Ntp/1.0.0": {
@@ -15486,10 +15552,10 @@
   "projectFileDependencyGroups": {
     "": [
       "GHIElectronics.UWP.Shields.FEZHAT >= 0.0.8",
+      "GrovePi >= 1.0.9",
       "IoT.Ntp >= 1.0.0",
       "Microsoft.Azure.Devices.Client >= 1.0.6",
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.1.0",
-      "Newtonsoft.Json >= 8.0.3",
       "UnitsNet >= 3.34.0"
     ],
     "UAP,Version=v10.0": []
