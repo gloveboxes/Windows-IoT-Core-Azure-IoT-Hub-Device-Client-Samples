@@ -9,7 +9,8 @@ using GrovePi;
 using IotServices;
 using Microsoft.Azure.Devices.Client;
 
-// The Background Application template is documented at http://go.microsoft.com/fwlink/?LinkID=533884&clcid=0x409
+
+// GrovePi Samples https://github.com/DexterInd/GrovePi/tree/master/Software/CSharp/Samples
 
 namespace GrovePiHAT
 {
@@ -18,8 +19,10 @@ namespace GrovePiHAT
         BackgroundTaskDeferral deferral;
         DeviceClient deviceClient = DeviceClient.CreateFromConnectionString("HostName=glovebox-iot-hub.azure-devices.net;DeviceId=RPiGrovePi;SharedAccessKey=W1THCWLeUmbqlmdnv2gtpcTuxmlsa+tPQbSae0fuxNc=");
 
-        IDHTTemperatureAndHumiditySensor sensor = DeviceFactory.Build.DHTTemperatureAndHumiditySensor(Pin.DigitalPin4, DHTModel.Dht11);
+        IDHTTemperatureAndHumiditySensor dht11 = DeviceFactory.Build.DHTTemperatureAndHumiditySensor(Pin.DigitalPin3, DHTModel.Dht11);
         ILightSensor light = DeviceFactory.Build.LightSensor(Pin.AnalogPin0);
+        IRelay relay = DeviceFactory.Build.Relay(Pin.DigitalPin2);
+        ILed publishLed = DeviceFactory.Build.Led(Pin.DigitalPin5);
 
         IoTHubCommand<String> iotHubCommand;
         Telemetry telemetry;
@@ -27,7 +30,7 @@ namespace GrovePiHAT
         public void Run(IBackgroundTaskInstance taskInstance) {
             deferral = taskInstance.GetDeferral();
 
-            telemetry = new Telemetry("Sydney", "RPiFez", Publish, 60);
+            telemetry = new Telemetry("Sydney", "RPiGrovePi", Publish, 60);
 
             iotHubCommand = new IoTHubCommand<string>(deviceClient, telemetry);
             iotHubCommand.CommandReceived += IotHubCommand_CommandReceived;
@@ -35,19 +38,40 @@ namespace GrovePiHAT
         }
 
         private void IotHubCommand_CommandReceived(object sender, CommandEventArgs<string> e) {
-            //  todo add something...
+            switch (e.Item.ToUpper()) {
+                case "ON":
+                    relay.ChangeState(SensorStatus.On);
+                    break;
+                case "OFF":
+                    relay.ChangeState(SensorStatus.Off);
+                    break;
+                default:
+                    break;
+            }
         }
 
         async void Publish() {
-            if (sensor == null || deviceClient == null) { return; }
+            if (dht11 == null || deviceClient == null) { return; }
+
+            double temperature, humidity;
 
             try {
-                sensor.Measure();
+                publishLed.ChangeState(SensorStatus.On);
 
-                var content = new Message(telemetry.ToJson(sensor.TemperatureInCelsius, light.SensorValue(), 0, sensor.Humidity));
+                dht11.Measure();
+
+                temperature = dht11.TemperatureInCelsius;
+                humidity = dht11.Humidity;
+
+                if (double.IsNaN(temperature) || double.IsNaN(humidity)) { return; }                
+
+                var content = new Message(telemetry.ToJson(temperature, light.SensorValue() * 100 / 1023, 0, humidity));
+
                 await deviceClient.SendEventAsync(content);
             }
             catch { telemetry.Exceptions++; }
+
+            publishLed.ChangeState(SensorStatus.Off);
         }
     }
 }
