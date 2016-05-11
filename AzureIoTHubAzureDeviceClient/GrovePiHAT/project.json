@@ -1,7 +1,7 @@
 ﻿{
   "dependencies": {
     "GrovePi": "1.0.9",
-    "Microsoft.Azure.Devices.Client": "1.0.6",
+    "Microsoft.Azure.Devices.Client": "1.0.7",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0"
   },
   "frameworks": {

@@ -49,7 +49,7 @@
           "lib/uap10.0/Microsoft.Azure.Amqp.Uwp.dll": {}
         }
       },
-      "Microsoft.Azure.Devices.Client/1.0.6": {
+      "Microsoft.Azure.Devices.Client/1.0.7": {
         "dependencies": {
           "Microsoft.Azure.Amqp": "1.1.1",
           "PCLCrypto": "1.0.86"
@@ -1919,7 +1919,7 @@
           "lib/uap10.0/Microsoft.Azure.Amqp.Uwp.dll": {}
         }
       },
-      "Microsoft.Azure.Devices.Client/1.0.6": {
+      "Microsoft.Azure.Devices.Client/1.0.7": {
         "dependencies": {
           "Microsoft.Azure.Amqp": "1.1.1",
           "PCLCrypto": "1.0.86"
@@ -3650,7 +3650,7 @@
           "lib/uap10.0/Microsoft.Azure.Amqp.Uwp.dll": {}
         }
       },
-      "Microsoft.Azure.Devices.Client/1.0.6": {
+      "Microsoft.Azure.Devices.Client/1.0.7": {
         "dependencies": {
           "Microsoft.Azure.Amqp": "1.1.1",
           "PCLCrypto": "1.0.86"
@@ -5339,7 +5339,7 @@
           "lib/uap10.0/Microsoft.Azure.Amqp.Uwp.dll": {}
         }
       },
-      "Microsoft.Azure.Devices.Client/1.0.6": {
+      "Microsoft.Azure.Devices.Client/1.0.7": {
         "dependencies": {
           "Microsoft.Azure.Amqp": "1.1.1",
           "PCLCrypto": "1.0.86"
@@ -7078,7 +7078,7 @@
           "lib/uap10.0/Microsoft.Azure.Amqp.Uwp.dll": {}
         }
       },
-      "Microsoft.Azure.Devices.Client/1.0.6": {
+      "Microsoft.Azure.Devices.Client/1.0.7": {
         "dependencies": {
           "Microsoft.Azure.Amqp": "1.1.1",
           "PCLCrypto": "1.0.86"
@@ -8767,7 +8767,7 @@
           "lib/uap10.0/Microsoft.Azure.Amqp.Uwp.dll": {}
         }
       },
-      "Microsoft.Azure.Devices.Client/1.0.6": {
+      "Microsoft.Azure.Devices.Client/1.0.7": {
         "dependencies": {
           "Microsoft.Azure.Amqp": "1.1.1",
           "PCLCrypto": "1.0.86"
@@ -10506,7 +10506,7 @@
           "lib/uap10.0/Microsoft.Azure.Amqp.Uwp.dll": {}
         }
       },
-      "Microsoft.Azure.Devices.Client/1.0.6": {
+      "Microsoft.Azure.Devices.Client/1.0.7": {
         "dependencies": {
           "Microsoft.Azure.Amqp": "1.1.1",
           "PCLCrypto": "1.0.86"
@@ -12200,11 +12200,11 @@
         "lib/uap10.0/Microsoft.Azure.Amqp.Uwp.dll"
       ]
     },
-    "Microsoft.Azure.Devices.Client/1.0.6": {
-      "sha512": "F51UjtiJLCEZTBRtKDUL8o25ZNJHFN1yoyEMktO1OKHZHax8oNAf3aNWLDJrVPOcZ6Ju90v669jDWCdGUOL3dw==",
+    "Microsoft.Azure.Devices.Client/1.0.7": {
+      "sha512": "q+ffG08qBiTC2TZ0GGQe8UtFC4+sAUI1g2aPIKPp3Q8ID36siDCZ+7O4LnKXtubw9o/4Dvd8V5DnOGXb6GMcHA==",
       "type": "package",
       "files": [
-        "Microsoft.Azure.Devices.Client.1.0.6.nupkg.sha512",
+        "Microsoft.Azure.Devices.Client.1.0.7.nupkg.sha512",
         "Microsoft.Azure.Devices.Client.nuspec",
         "build/native/Microsoft.Azure.Devices.Client.targets",
         "lib/native/Microsoft.Azure.Devices.Client.winmd",
@@ -15554,7 +15554,7 @@
       "GHIElectronics.UWP.Shields.FEZHAT >= 0.0.8",
       "GrovePi >= 1.0.9",
       "IoT.Ntp >= 1.0.0",
-      "Microsoft.Azure.Devices.Client >= 1.0.6",
+      "Microsoft.Azure.Devices.Client >= 1.0.7",
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.1.0",
       "UnitsNet >= 3.34.0"
     ],
