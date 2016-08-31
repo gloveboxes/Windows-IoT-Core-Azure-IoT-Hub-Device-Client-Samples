@@ -30,7 +30,7 @@ namespace GrovePiHAT
         public void Run(IBackgroundTaskInstance taskInstance) {
             deferral = taskInstance.GetDeferral();
 
-            telemetry = new Telemetry("Sydney", "RPiGrovePi", Publish, 60);
+            telemetry = new Telemetry("Sydney", Publish, 60);
 
             iotHubCommand = new IoTHubCommand<string>(deviceClient, telemetry);
             iotHubCommand.CommandReceived += IotHubCommand_CommandReceived;

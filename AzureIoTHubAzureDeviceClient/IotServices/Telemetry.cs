@@ -14,14 +14,12 @@ namespace IotServices
         public string Humidity { get; set; }
         public string HPa { get; set; }
         public string Light { get; set; }
-        public string Dev { get; set; }
         public int Id { get; set; }
         public int Exceptions { get; set; }
 
 
-        public Telemetry(string geo, string deviceId, MeasureMethod measureMethod = null, int sampleRateInSeconds = 60) : base(measureMethod, sampleRateInSeconds) {
+        public Telemetry(string geo, MeasureMethod measureMethod = null, int sampleRateInSeconds = 60) : base(measureMethod, sampleRateInSeconds) {
             this.Geo = geo;
-            this.Dev = deviceId;
         }
 
         public byte[] ToJson(double temperature, double light, double hpa, double humidity) {

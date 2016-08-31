@@ -23,7 +23,7 @@ namespace IoTHubFezHat
             hat.D2.TurnOff();
             hat.D3.TurnOff();
 
-            telemetry = new Telemetry("Sydney", "RPiFez", Publish, 30);
+            telemetry = new Telemetry("Sydney", Publish, 30);
 
             iotHubCommand = new IoTHubCommand<string>(deviceClient, telemetry);
             iotHubCommand.CommandReceived += Commanding_CommandReceived;

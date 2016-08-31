@@ -28,7 +28,7 @@ namespace IoTHubExplorerProHat
         public void Run(IBackgroundTaskInstance taskInstance) {
             deferral = taskInstance.GetDeferral();
 
-            telemetry = new Telemetry("Sydney", "RPi3DG", Measure);
+            telemetry = new Telemetry("Sydney", Measure);
 
             ReceiveC2dAsync(deviceClient);
 

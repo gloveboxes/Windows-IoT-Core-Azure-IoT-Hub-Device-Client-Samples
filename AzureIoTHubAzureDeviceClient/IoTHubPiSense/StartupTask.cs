@@ -15,7 +15,9 @@ namespace IoTHubPiSense
 {
     public sealed class StartupTask : IBackgroundTask
     {
-        private DeviceClient deviceClient = DeviceClient.CreateFromConnectionString("HostName=glovebox-iot-hub.azure-devices.net;DeviceId=RPiSense;SharedAccessKey=AesJg+psAjbFHFgJ4BuqopBv8sIpb88q6ZdWMqVDqQw=");
+
+        
+        private DeviceClient deviceClient = DeviceClient.CreateFromConnectionString("HostName=IoTCampAU.azure-devices.net;DeviceId=pisense;SharedAccessKey=04a4dg5uOyPIRK67cM0BNzIQ7kMLngGnhCri7JRZeoo=");
 
         BackgroundTaskDeferral deferral;
         ISenseHat hat;
@@ -25,24 +27,21 @@ namespace IoTHubPiSense
         Color statusColour = Colors.Blue;
 
         ObservableConcurrentQueue<String> q = new ObservableConcurrentQueue<string>();
-        
+
 
         public async void Run(IBackgroundTaskInstance taskInstance) {
             deferral = taskInstance.GetDeferral();
-            telemetry = new Telemetry("Sydney", "RPiSense", Measure);
+            telemetry = new Telemetry("Sydney", Measure, 4);
             hat = await SenseHatFactory.GetSenseHat().ConfigureAwait(false);
             display = hat.Display;
 
-            q.Dequeued += Q_Dequeued;
+            q.Dequeued += Q_Dequeued;  // simple mechanism to decouple received messages
 
             ReceiveC2dAsync(deviceClient);
-
-            while (true) {
-                q.Dequeue();
-            }
         }
 
-        private void Q_Dequeued(object sender, ItemEventArgs<string> e) {
+        private void Q_Dequeued(object sender, ItemEventArgs<string> e)
+        {
             Debug.WriteLine(e.Item);
         }
 
@@ -59,11 +58,6 @@ namespace IoTHubPiSense
                 }
 
                 display.Clear();
-
-                if (telemetry.Exceptions > 0) {
-                    tinyFont.Write(display, "E", Colors.Red);
-                }
-
                 display.Update();
             }
             catch { telemetry.Exceptions++; }
@@ -85,17 +79,17 @@ namespace IoTHubPiSense
 
                     if (telemetry.SetSampleRateInSeconds(command)) { continue; }
 
-                    switch (command) {
-                        case "RED":
+                    switch (command[0]) {
+                        case 'R':
                             statusColour = Colors.Red;
                             break;
-                        case "GREEN":
+                        case 'G':
                             statusColour = Colors.Green;
                             break;
-                        case "BLUE":
+                        case 'B':
                             statusColour = Colors.Blue;
                             break;
-                        case "YELLOW":
+                        case 'Y':
                             statusColour = Colors.Yellow;
                             break;
                         default:
