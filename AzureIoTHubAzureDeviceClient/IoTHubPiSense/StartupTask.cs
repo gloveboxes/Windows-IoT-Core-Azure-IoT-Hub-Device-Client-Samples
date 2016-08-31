@@ -14,9 +14,7 @@ using Windows.UI;
 namespace IoTHubPiSense
 {
     public sealed class StartupTask : IBackgroundTask
-    {
-
-        
+    {        
         private DeviceClient deviceClient = DeviceClient.CreateFromConnectionString("HostName=IoTCampAU.azure-devices.net;DeviceId=pisense;SharedAccessKey=04a4dg5uOyPIRK67cM0BNzIQ7kMLngGnhCri7JRZeoo=");
 
         BackgroundTaskDeferral deferral;
@@ -27,7 +25,6 @@ namespace IoTHubPiSense
         Color statusColour = Colors.Blue;
 
         ObservableConcurrentQueue<String> q = new ObservableConcurrentQueue<string>();
-
 
         public async void Run(IBackgroundTaskInstance taskInstance) {
             deferral = taskInstance.GetDeferral();

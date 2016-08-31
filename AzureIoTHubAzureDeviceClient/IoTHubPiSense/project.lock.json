@@ -3,7 +3,7 @@
   "version": 1,
   "targets": {
     "UAP,Version=v10.0": {
-      "Emmellsoft.IoT.RPi.SenseHat/0.1.0.9": {
+      "Emmellsoft.IoT.RPi.SenseHat/0.1.0.10": {
         "compile": {
           "lib/.NETCore50/Emmellsoft.IoT.Rpi.SenseHat.dll": {},
           "lib/.NETCore50/RTIMULibCS.dll": {}
@@ -33,11 +33,12 @@
           "lib/uap10.0/Microsoft.Azure.Amqp.Uwp.dll": {}
         }
       },
-      "Microsoft.Azure.Devices.Client/1.0.17": {
+      "Microsoft.Azure.Devices.Client/1.0.18": {
         "dependencies": {
           "Microsoft.AspNet.WebApi.Client": "5.2.3",
           "Microsoft.Azure.Amqp": "1.1.5",
-          "PCLCrypto": "1.0.86"
+          "PCLCrypto": "1.0.86",
+          "Validation": "2.2.8"
         },
         "compile": {
           "lib/uap10.0/Microsoft.Azure.Devices.Client.winmd": {}
@@ -341,12 +342,12 @@
           "ref/netstandard1.3/Microsoft.Win32.Primitives.dll": {}
         }
       },
-      "Newtonsoft.Json/8.0.3": {
+      "Newtonsoft.Json/9.0.1": {
         "compile": {
-          "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
         },
         "runtime": {
-          "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
         }
       },
       "PCLCrypto/1.0.86": {
@@ -2119,17 +2120,17 @@
           }
         }
       },
-      "Validation/2.0.6.15003": {
+      "Validation/2.2.8": {
         "compile": {
-          "lib/portable-net40+sl50+win+wpa81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10/Validation.dll": {}
+          "lib/dotnet/Validation.dll": {}
         },
         "runtime": {
-          "lib/portable-net40+sl50+win+wpa81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10/Validation.dll": {}
+          "lib/dotnet/Validation.dll": {}
         }
       }
     },
     "UAP,Version=v10.0/win10-arm": {
-      "Emmellsoft.IoT.RPi.SenseHat/0.1.0.9": {
+      "Emmellsoft.IoT.RPi.SenseHat/0.1.0.10": {
         "compile": {
           "lib/.NETCore50/Emmellsoft.IoT.Rpi.SenseHat.dll": {},
           "lib/.NETCore50/RTIMULibCS.dll": {}
@@ -2159,11 +2160,12 @@
           "lib/uap10.0/Microsoft.Azure.Amqp.Uwp.dll": {}
         }
       },
-      "Microsoft.Azure.Devices.Client/1.0.17": {
+      "Microsoft.Azure.Devices.Client/1.0.18": {
         "dependencies": {
           "Microsoft.AspNet.WebApi.Client": "5.2.3",
           "Microsoft.Azure.Amqp": "1.1.5",
-          "PCLCrypto": "1.0.86"
+          "PCLCrypto": "1.0.86",
+          "Validation": "2.2.8"
         },
         "compile": {
           "lib/uap10.0/Microsoft.Azure.Devices.Client.winmd": {}
@@ -2415,12 +2417,12 @@
           "ref/netstandard1.3/Microsoft.Win32.Primitives.dll": {}
         }
       },
-      "Newtonsoft.Json/8.0.3": {
+      "Newtonsoft.Json/9.0.1": {
         "compile": {
-          "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
         },
         "runtime": {
-          "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
         }
       },
       "PCLCrypto/1.0.86": {
@@ -4325,17 +4327,17 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Validation/2.0.6.15003": {
+      "Validation/2.2.8": {
         "compile": {
-          "lib/portable-net40+sl50+win+wpa81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10/Validation.dll": {}
+          "lib/dotnet/Validation.dll": {}
         },
         "runtime": {
-          "lib/portable-net40+sl50+win+wpa81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10/Validation.dll": {}
+          "lib/dotnet/Validation.dll": {}
         }
       }
     },
     "UAP,Version=v10.0/win10-arm-aot": {
-      "Emmellsoft.IoT.RPi.SenseHat/0.1.0.9": {
+      "Emmellsoft.IoT.RPi.SenseHat/0.1.0.10": {
         "compile": {
           "lib/.NETCore50/Emmellsoft.IoT.Rpi.SenseHat.dll": {},
           "lib/.NETCore50/RTIMULibCS.dll": {}
@@ -4365,11 +4367,12 @@
           "lib/uap10.0/Microsoft.Azure.Amqp.Uwp.dll": {}
         }
       },
-      "Microsoft.Azure.Devices.Client/1.0.17": {
+      "Microsoft.Azure.Devices.Client/1.0.18": {
         "dependencies": {
           "Microsoft.AspNet.WebApi.Client": "5.2.3",
           "Microsoft.Azure.Amqp": "1.1.5",
-          "PCLCrypto": "1.0.86"
+          "PCLCrypto": "1.0.86",
+          "Validation": "2.2.8"
         },
         "compile": {
           "lib/uap10.0/Microsoft.Azure.Devices.Client.winmd": {}
@@ -4622,12 +4625,12 @@
           "ref/netstandard1.3/Microsoft.Win32.Primitives.dll": {}
         }
       },
-      "Newtonsoft.Json/8.0.3": {
+      "Newtonsoft.Json/9.0.1": {
         "compile": {
-          "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
         },
         "runtime": {
-          "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
         }
       },
       "PCLCrypto/1.0.86": {
@@ -6570,17 +6573,17 @@
           "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Validation/2.0.6.15003": {
+      "Validation/2.2.8": {
         "compile": {
-          "lib/portable-net40+sl50+win+wpa81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10/Validation.dll": {}
+          "lib/dotnet/Validation.dll": {}
         },
         "runtime": {
-          "lib/portable-net40+sl50+win+wpa81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10/Validation.dll": {}
+          "lib/dotnet/Validation.dll": {}
         }
       }
     },
     "UAP,Version=v10.0/win10-x64": {
-      "Emmellsoft.IoT.RPi.SenseHat/0.1.0.9": {
+      "Emmellsoft.IoT.RPi.SenseHat/0.1.0.10": {
         "compile": {
           "lib/.NETCore50/Emmellsoft.IoT.Rpi.SenseHat.dll": {},
           "lib/.NETCore50/RTIMULibCS.dll": {}
@@ -6610,11 +6613,12 @@
           "lib/uap10.0/Microsoft.Azure.Amqp.Uwp.dll": {}
         }
       },
-      "Microsoft.Azure.Devices.Client/1.0.17": {
+      "Microsoft.Azure.Devices.Client/1.0.18": {
         "dependencies": {
           "Microsoft.AspNet.WebApi.Client": "5.2.3",
           "Microsoft.Azure.Amqp": "1.1.5",
-          "PCLCrypto": "1.0.86"
+          "PCLCrypto": "1.0.86",
+          "Validation": "2.2.8"
         },
         "compile": {
           "lib/uap10.0/Microsoft.Azure.Devices.Client.winmd": {}
@@ -6870,12 +6874,12 @@
           "ref/netstandard1.3/Microsoft.Win32.Primitives.dll": {}
         }
       },
-      "Newtonsoft.Json/8.0.3": {
+      "Newtonsoft.Json/9.0.1": {
         "compile": {
-          "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
         },
         "runtime": {
-          "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
         }
       },
       "PCLCrypto/1.0.86": {
@@ -8785,17 +8789,17 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Validation/2.0.6.15003": {
+      "Validation/2.2.8": {
         "compile": {
-          "lib/portable-net40+sl50+win+wpa81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10/Validation.dll": {}
+          "lib/dotnet/Validation.dll": {}
         },
         "runtime": {
-          "lib/portable-net40+sl50+win+wpa81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10/Validation.dll": {}
+          "lib/dotnet/Validation.dll": {}
         }
       }
     },
     "UAP,Version=v10.0/win10-x64-aot": {
-      "Emmellsoft.IoT.RPi.SenseHat/0.1.0.9": {
+      "Emmellsoft.IoT.RPi.SenseHat/0.1.0.10": {
         "compile": {
           "lib/.NETCore50/Emmellsoft.IoT.Rpi.SenseHat.dll": {},
           "lib/.NETCore50/RTIMULibCS.dll": {}
@@ -8825,11 +8829,12 @@
           "lib/uap10.0/Microsoft.Azure.Amqp.Uwp.dll": {}
         }
       },
-      "Microsoft.Azure.Devices.Client/1.0.17": {
+      "Microsoft.Azure.Devices.Client/1.0.18": {
         "dependencies": {
           "Microsoft.AspNet.WebApi.Client": "5.2.3",
           "Microsoft.Azure.Amqp": "1.1.5",
-          "PCLCrypto": "1.0.86"
+          "PCLCrypto": "1.0.86",
+          "Validation": "2.2.8"
         },
         "compile": {
           "lib/uap10.0/Microsoft.Azure.Devices.Client.winmd": {}
@@ -9086,12 +9091,12 @@
           "ref/netstandard1.3/Microsoft.Win32.Primitives.dll": {}
         }
       },
-      "Newtonsoft.Json/8.0.3": {
+      "Newtonsoft.Json/9.0.1": {
         "compile": {
-          "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
         },
         "runtime": {
-          "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
         }
       },
       "PCLCrypto/1.0.86": {
@@ -11039,17 +11044,17 @@
           "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Validation/2.0.6.15003": {
+      "Validation/2.2.8": {
         "compile": {
-          "lib/portable-net40+sl50+win+wpa81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10/Validation.dll": {}
+          "lib/dotnet/Validation.dll": {}
         },
         "runtime": {
-          "lib/portable-net40+sl50+win+wpa81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10/Validation.dll": {}
+          "lib/dotnet/Validation.dll": {}
         }
       }
     },
     "UAP,Version=v10.0/win10-x86": {
-      "Emmellsoft.IoT.RPi.SenseHat/0.1.0.9": {
+      "Emmellsoft.IoT.RPi.SenseHat/0.1.0.10": {
         "compile": {
           "lib/.NETCore50/Emmellsoft.IoT.Rpi.SenseHat.dll": {},
           "lib/.NETCore50/RTIMULibCS.dll": {}
@@ -11079,11 +11084,12 @@
           "lib/uap10.0/Microsoft.Azure.Amqp.Uwp.dll": {}
         }
       },
-      "Microsoft.Azure.Devices.Client/1.0.17": {
+      "Microsoft.Azure.Devices.Client/1.0.18": {
         "dependencies": {
           "Microsoft.AspNet.WebApi.Client": "5.2.3",
           "Microsoft.Azure.Amqp": "1.1.5",
-          "PCLCrypto": "1.0.86"
+          "PCLCrypto": "1.0.86",
+          "Validation": "2.2.8"
         },
         "compile": {
           "lib/uap10.0/Microsoft.Azure.Devices.Client.winmd": {}
@@ -11339,12 +11345,12 @@
           "ref/netstandard1.3/Microsoft.Win32.Primitives.dll": {}
         }
       },
-      "Newtonsoft.Json/8.0.3": {
+      "Newtonsoft.Json/9.0.1": {
         "compile": {
-          "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
         },
         "runtime": {
-          "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
         }
       },
       "PCLCrypto/1.0.86": {
@@ -13254,17 +13260,17 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Validation/2.0.6.15003": {
+      "Validation/2.2.8": {
         "compile": {
-          "lib/portable-net40+sl50+win+wpa81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10/Validation.dll": {}
+          "lib/dotnet/Validation.dll": {}
         },
         "runtime": {
-          "lib/portable-net40+sl50+win+wpa81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10/Validation.dll": {}
+          "lib/dotnet/Validation.dll": {}
         }
       }
     },
     "UAP,Version=v10.0/win10-x86-aot": {
-      "Emmellsoft.IoT.RPi.SenseHat/0.1.0.9": {
+      "Emmellsoft.IoT.RPi.SenseHat/0.1.0.10": {
         "compile": {
           "lib/.NETCore50/Emmellsoft.IoT.Rpi.SenseHat.dll": {},
           "lib/.NETCore50/RTIMULibCS.dll": {}
@@ -13294,11 +13300,12 @@
           "lib/uap10.0/Microsoft.Azure.Amqp.Uwp.dll": {}
         }
       },
-      "Microsoft.Azure.Devices.Client/1.0.17": {
+      "Microsoft.Azure.Devices.Client/1.0.18": {
         "dependencies": {
           "Microsoft.AspNet.WebApi.Client": "5.2.3",
           "Microsoft.Azure.Amqp": "1.1.5",
-          "PCLCrypto": "1.0.86"
+          "PCLCrypto": "1.0.86",
+          "Validation": "2.2.8"
         },
         "compile": {
           "lib/uap10.0/Microsoft.Azure.Devices.Client.winmd": {}
@@ -13555,12 +13562,12 @@
           "ref/netstandard1.3/Microsoft.Win32.Primitives.dll": {}
         }
       },
-      "Newtonsoft.Json/8.0.3": {
+      "Newtonsoft.Json/9.0.1": {
         "compile": {
-          "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
         },
         "runtime": {
-          "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
         }
       },
       "PCLCrypto/1.0.86": {
@@ -15508,20 +15515,21 @@
           "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Validation/2.0.6.15003": {
+      "Validation/2.2.8": {
         "compile": {
-          "lib/portable-net40+sl50+win+wpa81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10/Validation.dll": {}
+          "lib/dotnet/Validation.dll": {}
         },
         "runtime": {
-          "lib/portable-net40+sl50+win+wpa81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10/Validation.dll": {}
+          "lib/dotnet/Validation.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "Emmellsoft.IoT.RPi.SenseHat/0.1.0.9": {
-      "sha512": "QZ9imB1SxHbwDo/goB2OVavB2zeAYGUitZOs6zKxuaP1PRyA65z+zQjWCCI7brBqr23ngY9CxngyZvcw12AheA==",
+    "Emmellsoft.IoT.RPi.SenseHat/0.1.0.10": {
+      "sha512": "4MTxr6JqOOTGavAxBlFS6vPt42WFZV6SjIXjjf4w8qRJWR6c4PuRvzPQ3A/sZgGsriIg6U211QF2R0ZnBhpgnQ==",
       "type": "package",
+      "path": "Emmellsoft.IoT.RPi.SenseHat/0.1.0.10",
       "files": [
         "Content/DemoRunner.cs",
         "Content/Demos/Compass.cs",
@@ -15536,7 +15544,7 @@
         "Content/Properties/RichardsTech.Sensors.rd.xml",
         "Content/Properties/Rpi.SenseHat.rd.xml",
         "Content/SenseHatDemo.cs",
-        "Emmellsoft.IoT.RPi.SenseHat.0.1.0.9.nupkg.sha512",
+        "Emmellsoft.IoT.RPi.SenseHat.0.1.0.10.nupkg.sha512",
         "Emmellsoft.IoT.RPi.SenseHat.nuspec",
         "Tools/Init.ps1",
         "lib/.NETCore50/Emmellsoft.IoT.Rpi.SenseHat.dll",
@@ -15568,12 +15576,12 @@
         "lib/uap10.0/Microsoft.Azure.Amqp.Uwp.dll"
       ]
     },
-    "Microsoft.Azure.Devices.Client/1.0.17": {
-      "sha512": "LBog2ycUXP46Wj2LzoL914y/obqZsJwmgjiUetI4ZeURgmrS61ZW3ZXs1KLmTYiv5L7SAF02T2CNIcSB9JUStA==",
+    "Microsoft.Azure.Devices.Client/1.0.18": {
+      "sha512": "I7AeQilMIFUn12wPfiMoHI4d6hMZHECdvWKlMjGKysZIwRDyUx2ibDSWm/PwVOdzSx3yCGjm61Hy4PqYQ9yobQ==",
       "type": "package",
-      "path": "Microsoft.Azure.Devices.Client/1.0.17",
+      "path": "Microsoft.Azure.Devices.Client/1.0.18",
       "files": [
-        "Microsoft.Azure.Devices.Client.1.0.17.nupkg.sha512",
+        "Microsoft.Azure.Devices.Client.1.0.18.nupkg.sha512",
         "Microsoft.Azure.Devices.Client.nuspec",
         "build/native/Microsoft.Azure.Devices.Client.targets",
         "lib/native/Microsoft.Azure.Devices.Client.winmd",
@@ -16069,11 +16077,12 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "Newtonsoft.Json/8.0.3": {
-      "sha512": "KGsYQdS2zLH+H8x2cZaSI7e+YZ4SFIbyy1YJQYl6GYBWjf5o4H1A68nxyq+WTyVSOJQ4GqS/DiPE+UseUizgMg==",
+    "Newtonsoft.Json/9.0.1": {
+      "sha512": "U82mHQSKaIk+lpSVCbWYKNavmNH1i5xrExDEquU1i6I5pV6UMOqRnJRSlKO3cMPfcpp0RgDY+8jUXHdQ4IfXvw==",
       "type": "package",
+      "path": "Newtonsoft.Json/9.0.1",
       "files": [
-        "Newtonsoft.Json.8.0.3.nupkg.sha512",
+        "Newtonsoft.Json.9.0.1.nupkg.sha512",
         "Newtonsoft.Json.nuspec",
         "lib/net20/Newtonsoft.Json.dll",
         "lib/net20/Newtonsoft.Json.xml",
@@ -16083,10 +16092,12 @@
         "lib/net40/Newtonsoft.Json.xml",
         "lib/net45/Newtonsoft.Json.dll",
         "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
         "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.dll",
         "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.xml",
-        "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll",
-        "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.xml",
+        "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.xml",
         "tools/install.ps1"
       ]
     },
@@ -21982,21 +21993,33 @@
         "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll"
       ]
     },
-    "Validation/2.0.6.15003": {
-      "sha512": "8vgCOG9mPeOd3xwyL20OT9RyOKq9PmJb0Iltzwj6eay38Cq2v6ojvpSDbc+sc6YXit+iAVyyvHTS29rBvDpdDQ==",
+    "Validation/2.2.8": {
+      "sha512": "DMNc7JhPlgRwnR+NNb+ldoluObL+RBw96aMoiZae/Looa4vgaAnIysmle/bV2OKqDNW9oUBDckPyfa2+sX6JdA==",
       "type": "package",
+      "path": "Validation/2.2.8",
       "files": [
-        "Validation.2.0.6.15003.nupkg.sha512",
+        "README.md",
+        "Validation.2.2.8.nupkg.sha512",
         "Validation.nuspec",
-        "lib/portable-net40+sl50+win+wpa81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10/Validation.dll",
-        "lib/portable-net40+sl50+win+wpa81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10/Validation.xml"
+        "lib/dotnet/Validation.dll",
+        "lib/dotnet/Validation.xml",
+        "lib/portable-net40+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10/Validation.dll",
+        "lib/portable-net40+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10/Validation.xml",
+        "lib/portable-net45+dnxcore50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10/Validation.dll",
+        "lib/portable-net45+dnxcore50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10/Validation.xml",
+        "tools/2013/RequiresNotNull.snippet",
+        "tools/2013/RequiresNotNullOrEmpty.snippet",
+        "tools/2015/RequiresNotNull.snippet",
+        "tools/2015/RequiresNotNullOrEmpty.snippet",
+        "tools/install_snippets.cmd",
+        "tools/uninstall_snippets.cmd"
       ]
     }
   },
   "projectFileDependencyGroups": {
     "": [
-      "Emmellsoft.IoT.RPi.SenseHat >= 0.1.0.9",
-      "Microsoft.Azure.Devices.Client >= 1.0.17",
+      "Emmellsoft.IoT.RPi.SenseHat >= 0.1.0.10",
+      "Microsoft.Azure.Devices.Client >= 1.0.18",
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.2.2"
     ],
     "UAP,Version=v10.0": []
