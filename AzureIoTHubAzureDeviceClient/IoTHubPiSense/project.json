@@ -1,8 +1,8 @@
 ﻿{
   "dependencies": {
     "Emmellsoft.IoT.RPi.SenseHat": "0.1.0.10",
-    "Microsoft.Azure.Devices.Client": "1.0.18",
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2"
+    "Microsoft.Azure.Devices.Client": "1.2.5",
+    "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.1"
   },
   "frameworks": {
     "uap10.0": {}

@@ -18,9 +18,10 @@ namespace IotServices
         public int Exceptions { get; set; }
 
 
-        public Telemetry(string geo, MeasureMethod measureMethod = null, int sampleRateInSeconds = 60) : base(measureMethod, sampleRateInSeconds) {
+        public Telemetry(string geo, MeasureMethod measureMethod = null, int sampleRateInSeconds = 60)  : base(measureMethod, sampleRateInSeconds) {
             this.Geo = geo;
         }
+
 
         public byte[] ToJson(double temperature, double light, double hpa, double humidity) {
             Celsius = RoundMeasurement(temperature, 2).ToString();

@@ -4,7 +4,7 @@
     <DeviceId>30F105C9-681E-420b-A277-7C086EAD8A4E</DeviceId>
     <UseEmulator>false</UseEmulator>
     <AuthenticationMode>Universal</AuthenticationMode>
-    <RemoteDebugMachine>169.254.216.100</RemoteDebugMachine>
+    <RemoteDebugMachine>192.168.1.127</RemoteDebugMachine>
     <RemoteDebugEnabled>true</RemoteDebugEnabled>
   </PropertyGroup>
   <PropertyGroup>
@@ -13,7 +13,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
     <DeviceId>30F105C9-681E-420b-A277-7C086EAD8A4E</DeviceId>
     <UseEmulator>false</UseEmulator>
-    <RemoteDebugMachine>169.254.216.100</RemoteDebugMachine>
+    <RemoteDebugMachine>192.168.1.127</RemoteDebugMachine>
     <AuthenticationMode>Universal</AuthenticationMode>
     <RemoteDebugEnabled>true</RemoteDebugEnabled>
   </PropertyGroup>

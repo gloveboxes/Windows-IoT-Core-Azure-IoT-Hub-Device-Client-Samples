@@ -14,7 +14,7 @@ using Windows.UI;
 namespace IoTHubPiSense
 {
     public sealed class StartupTask : IBackgroundTask
-    {        
+    {
         private DeviceClient deviceClient = DeviceClient.CreateFromConnectionString("HostName=IoTCampAU.azure-devices.net;DeviceId=pisense;SharedAccessKey=04a4dg5uOyPIRK67cM0BNzIQ7kMLngGnhCri7JRZeoo=");
 
         BackgroundTaskDeferral deferral;
@@ -26,30 +26,38 @@ namespace IoTHubPiSense
 
         ObservableConcurrentQueue<String> q = new ObservableConcurrentQueue<string>();
 
-        public async void Run(IBackgroundTaskInstance taskInstance) {
+        public async void Run(IBackgroundTaskInstance taskInstance)
+        {
             deferral = taskInstance.GetDeferral();
-            telemetry = new Telemetry("Sydney", Measure, 4);
             hat = await SenseHatFactory.GetSenseHat().ConfigureAwait(false);
             display = hat.Display;
+            telemetry = new Telemetry("Sydney", Measure, 4);
 
             q.Dequeued += Q_Dequeued;  // simple mechanism to decouple received messages
 
             ReceiveC2dAsync(deviceClient);
+
+            await Task.Run(new Action(Measure));
         }
 
         private void Q_Dequeued(object sender, ItemEventArgs<string> e)
         {
+            Debug.Write("Cloud to Device Data: ");
             Debug.WriteLine(e.Item);
         }
 
-        async void Measure() {
-            try {
+        async void Measure()
+        {
+            if (display == null || telemetry == null) { return; }
+            try
+            {
                 display.Fill(statusColour);
                 display.Update();
 
                 hat.Sensors.HumiditySensor.Update();
 
-                if (hat.Sensors.Temperature.HasValue && hat.Sensors.Humidity.HasValue) {
+                if (hat.Sensors.Temperature.HasValue && hat.Sensors.Humidity.HasValue)
+                {
                     var content = new Message(telemetry.ToJson(hat.Sensors.Temperature.Value, 50, 1010, hat.Sensors.Humidity.Value));
                     await deviceClient.SendEventAsync(content);
                 }
@@ -60,11 +68,15 @@ namespace IoTHubPiSense
             catch { telemetry.Exceptions++; }
         }
 
-        private async void ReceiveC2dAsync(DeviceClient deviceClient) {
-            while (true) {
-                try {
+        private async void ReceiveC2dAsync(DeviceClient deviceClient)
+        {
+            while (true)
+            {
+                try
+                {
                     Message receivedMessage = await deviceClient.ReceiveAsync();
-                    if (receivedMessage == null) {
+                    if (receivedMessage == null)
+                    {
                         await Task.Delay(2000);
                         continue;
                     }
@@ -76,7 +88,8 @@ namespace IoTHubPiSense
 
                     if (telemetry.SetSampleRateInSeconds(command)) { continue; }
 
-                    switch (command[0]) {
+                    switch (command[0])
+                    {
                         case 'R':
                             statusColour = Colors.Red;
                             break;
@@ -94,8 +107,8 @@ namespace IoTHubPiSense
                             break;
                     }
 
-                    display.Fill(statusColour);
-                    display.Update();
+                    //display.Fill(statusColour);
+                    //display.Update();
                 }
                 catch { telemetry.Exceptions++; }
             }

@@ -38,8 +38,6 @@ namespace IotServices
                     await deviceClient.CompleteAsync(receivedMessage);
                     string command = Encoding.ASCII.GetString(receivedMessage.GetBytes());
 
-                    if (telemetry.SetSampleRateInSeconds(command)) { continue; }
-
                     T cmd = (T)Convert.ChangeType(command, typeof(T));
 
                     CommandReceived?.Invoke(this, new CommandEventArgs<T>(cmd));
