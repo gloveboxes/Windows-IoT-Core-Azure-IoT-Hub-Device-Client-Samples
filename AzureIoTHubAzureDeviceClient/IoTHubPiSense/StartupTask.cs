@@ -44,6 +44,7 @@ namespace IoTHubPiSense
         {
             Debug.Write("Cloud to Device Data: ");
             Debug.WriteLine(e.Item);
+            SetColour(e.Item);
         }
 
         async void Measure()
@@ -68,6 +69,33 @@ namespace IoTHubPiSense
             catch { telemetry.Exceptions++; }
         }
 
+        private void SetColour(string cmd)
+        {
+            if (cmd == string.Empty) { return; }
+            if (telemetry.SetSampleRateInSeconds(cmd)) { return; }
+
+            string command = cmd.ToUpper();            
+
+            switch (command[0])
+            {
+                case 'R':
+                    statusColour = Colors.Red;
+                    break;
+                case 'G':
+                    statusColour = Colors.Green;
+                    break;
+                case 'B':
+                    statusColour = Colors.Blue;
+                    break;
+                case 'Y':
+                    statusColour = Colors.Yellow;
+                    break;
+                default:
+                    statusColour = Colors.Purple;
+                    break;
+            }
+        }
+
         private async void ReceiveC2dAsync(DeviceClient deviceClient)
         {
             while (true)
@@ -82,33 +110,10 @@ namespace IoTHubPiSense
                     }
 
                     await deviceClient.CompleteAsync(receivedMessage);
-                    string command = Encoding.ASCII.GetString(receivedMessage.GetBytes()).ToUpper();
+                    string command = Encoding.ASCII.GetString(receivedMessage.GetBytes());
 
                     q.Enqueue(command);
 
-                    if (telemetry.SetSampleRateInSeconds(command)) { continue; }
-
-                    switch (command[0])
-                    {
-                        case 'R':
-                            statusColour = Colors.Red;
-                            break;
-                        case 'G':
-                            statusColour = Colors.Green;
-                            break;
-                        case 'B':
-                            statusColour = Colors.Blue;
-                            break;
-                        case 'Y':
-                            statusColour = Colors.Yellow;
-                            break;
-                        default:
-                            statusColour = Colors.Purple;
-                            break;
-                    }
-
-                    //display.Fill(statusColour);
-                    //display.Update();
                 }
                 catch { telemetry.Exceptions++; }
             }
